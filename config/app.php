@@ -194,7 +194,13 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ServicesProvider::class,
 
+        /*
+         * Domain services provider
+         */
+        App\Providers\Services\RecipeServicesProvider::class,
+        App\Providers\Services\ScheduleServicesProvider::class,
     ],
 
     /*
