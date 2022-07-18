@@ -2,14 +2,18 @@
 
 namespace App\Http\Contexts\Recipe\Controllers;
 
-use App\Domain\Recipe\Query\GetRecipeQuery;
 use App\Domain\Recipe\Handlers\CreateRecipeHandler;
+use App\Domain\Recipe\Query\GetRecipeQuery;
+use App\Domain\Recipe\Query\GetRecipiesQuery;
 use App\Http\Contexts\Recipe\Requests\CreateRecipeRequest;
+use App\Http\Contexts\Recipe\Requests\IndexRecipesRequest;
 use App\Http\Contexts\Recipe\Resources\RecipeResource;
+use App\Http\Contexts\Recipe\Resources\RecipiesResource;
 use App\Http\Controller;
 use App\Infrastructure\Helpers\ResponseHelper as RH;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class RecipeController extends Controller
 {
@@ -31,6 +35,14 @@ class RecipeController extends Controller
 
     public function edit()
     {
-        return RH::json();
+        // return RH::json();
+    }
+
+    public function index(IndexRecipesRequest $request, GetRecipiesQuery $query)
+    {
+        $payload = collect($request->validated())->transformKeys(fn($key) => Str::camel($key));
+        $result = $query->get(...$payload);
+
+        return RH::json(RecipiesResource::collection($result));
     }
 }
