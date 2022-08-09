@@ -8,5 +8,5 @@ interface RecipeServiceInterface
 {
     public function create(array $attributes): Recipe;
 
-    public function update(array $aatributes): Recipe;
+    // public function update(array $aatributes): Recipe;
 }
