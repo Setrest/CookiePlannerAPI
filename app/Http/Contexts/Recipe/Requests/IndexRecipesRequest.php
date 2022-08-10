@@ -10,8 +10,8 @@ class IndexRecipesRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'min_ccal' => 'int|min:0',
-            'max_ccal' => 'int|min:0'
+            'min_ccal' => 'nullable|int|min:0',
+            'max_ccal' => 'nullable|int|min:0'
         ];
 
         return array_merge($rules, RequestHelper::paginationRules(perPage: false));
