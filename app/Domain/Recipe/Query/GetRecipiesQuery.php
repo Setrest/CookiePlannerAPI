@@ -14,8 +14,8 @@ class GetRecipiesQuery
     public function get(int $page = 1, ?int $minCcal = null, ?int $maxCcal = null)
     {
         $ds = $this->datasource;
-
-        if ($minCcal && $maxCcal) {
+        
+        if ($minCcal !== null && $maxCcal !== null) {
             $ds->ccalRange($minCcal, $maxCcal);
         }
 

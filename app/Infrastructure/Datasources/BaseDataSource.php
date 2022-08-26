@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 
 abstract class BaseDataSource implements BaseDataSourceInterface
 {
-    public Builder $source;
+    protected Builder $source;
 
     public function __call($name, $arguments)
     {
@@ -32,6 +32,11 @@ abstract class BaseDataSource implements BaseDataSourceInterface
     public function first(): Model
     {
         return $this->source->first();
+    }
+
+    public function count(): int
+    {
+        return $this->source->count();
     }
 
     public function paginate(int $page, int $perPage):LengthAwarePaginator

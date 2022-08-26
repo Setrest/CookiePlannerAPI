@@ -19,4 +19,10 @@ class RecipeDataSource extends BaseDataSource
 
         return $this;
     }
+
+    public function byIdForUser(int $id, int $userId)
+    {
+        $this->byId($id)->where('created_by_id', $userId);
+        return $this;
+    }
 }

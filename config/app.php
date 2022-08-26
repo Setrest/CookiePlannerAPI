@@ -201,6 +201,7 @@ return [
          */
         App\Providers\Services\RecipeServicesProvider::class,
         App\Providers\Services\ScheduleServicesProvider::class,
+        App\Providers\Services\StageServicesProvider::class,
     ],
 
     /*

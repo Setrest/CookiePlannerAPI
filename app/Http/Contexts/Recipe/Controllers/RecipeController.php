@@ -8,6 +8,7 @@ use App\Domain\Recipe\Query\GetRecipiesQuery;
 use App\Http\Contexts\Recipe\Requests\CreateRecipeRequest;
 use App\Http\Contexts\Recipe\Requests\IndexRecipesRequest;
 use App\Http\Contexts\Recipe\Resources\RecipeResource;
+use App\Http\Contexts\Recipe\Resources\RecipesCollection;
 use App\Http\Contexts\Recipe\Resources\RecipiesResource;
 use App\Http\Controller;
 use App\Infrastructure\Helpers\ResponseHelper as RH;
@@ -43,6 +44,6 @@ class RecipeController extends Controller
         $payload = collect($request->validated())->transformKeys(fn($key) => Str::camel($key));
         $result = $query->get(...$payload);
 
-        return RH::json(RecipiesResource::collection($result));
+        return RH::json(new RecipesCollection($result));
     }
 }

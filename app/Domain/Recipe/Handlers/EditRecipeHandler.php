@@ -12,8 +12,8 @@ class EditRecipeHandler
     public function __construct(private RecipeServiceInterface $recipeService, private RecipeIngredientServiceInterface $recipeIngredientService)
     {}
 
-    public function handle(User $user, string $title, int $ccal, int $time, array $ingredientIds): Recipe
-    {
-        $this->recipeService->update();
-    }
+//     public function handle(User $user, string $title, int $ccal, int $time, array $ingredientIds): Recipe
+//     {
+        // $this->recipeService->update();
+//     }
 }
